@@ -1,8 +1,7 @@
 @echo off & setlocal enableDelayedExpansion
 
-if "%~1" neq "1" call :selfUpdate
+call :selfUpdate
 
-echo updated 
 pause
 exit
 
@@ -18,8 +17,7 @@ exit
 	if "%remoteVersion%" neq "%currentVersion%" (
 		echo New version available. Updating...
 		curl -s -o "%~nx0" "%mainPath%/update.bat"
-		start "" "%~nx0" 1
-		exit /b
+		start /b "%~nx0" & exit /b
 	)
 	for %%i in (currentVersion mainPath remoteVersion remoteVersionUrl vFile) do set "%%~i="
 goto :eof
