@@ -20,6 +20,6 @@ exit
 		curl -s -o "%~nx0" "%remoteUpdateUrl%"
 		start "" "%~nx0"
 		exit
-	) else echo No update at this time
+	)
 	for %%i in (currentVersion mainPath remoteVersion remoteVersionUrl remoteUpdateUrl vFile) do set "%%~i="
 goto :eof
