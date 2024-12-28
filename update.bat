@@ -16,10 +16,10 @@ exit
 	curl -s -o "%vFile%" "%remoteVersionUrl%"
 	for /f "usebackq delims=" %%i in ("%vFile%") do set "remoteVersion=%%i"
 	
-	if "%remoteVersion:.=%" lss "%currentVersion:.=%" (
+	if %currentVersion:.=% lss %remoteVersion:.=% (
 		echo New version available. Updating...
 		curl -s -o "%~nx0" "%mainPath%/update.bat"
-		start /b "" "%~nx0"
+		start "" "%~nx0"
 		exit /b
 	)
 	for %%i in (currentVersion mainPath remoteVersion remoteVersionUrl vFile) do set "%%~i="
